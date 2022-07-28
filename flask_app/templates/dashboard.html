@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tv Shows</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body class="bg-dark">
+    <div class="d-flex justify-content-between align-items-center text-light border border-light py-2 px-5">
+        <h1 class="text-center">Welcome, {{user.first_name}}</h1>
+        <div>
+            <a href="/tvshows/new" class="btn btn-info">Create Review</a>
+            <a href="/logout" class="btn btn-danger">Logout</a>
+        </div>
+    </div>
+    <div class="container mt-4">
+        <table class="table table-light table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Type</th>
+                    <th>Genre</th>
+                    <th>Platform</th>
+                    <th>Rating</th>
+                    <th>Posted by</th>
+                    <th>Actions</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for tvshow in tvshows %}
+                <tr>
+                    <td>{{tvshow.title}}</td>
+                    <td>{{tvshow.type}}</td>
+                    <td>{{tvshow.genre}}</td>
+                    <td>{{tvshow.platform}}</td>
+                    <td>{{tvshow.rating}}</td>
+                    <td>{{tvshow.owner.first_name}}</td> 
+                    <td>
+                        <a href="/tvshows/{{tvshow.id}}/view" class="btn btn-primary">View</a>
+                        {% if tvshow.owner.id == session['id'] %}
+                        <a href="/tvshows/{{tvshow.id}}/edit" class="btn btn-secondary">Edit</a>
+                        <a href="/tvshows/{{tvshow.id}}/delete" class="btn btn-danger">Delete</a>
+                        {% endif %}
+                    </td>         
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
