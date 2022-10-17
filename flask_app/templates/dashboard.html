@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tv Shows</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script>
+        function likeCounter() {
+          if (typeof(Storage) !== "undefined") {
+            if (localStorage.clickcount) {
+              localStorage.clickcount = Number(localStorage.clickcount)+1;
+            } else {
+              localStorage.clickcount = 1;
+            }
+            document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+          } else {
+            document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+          }
+        }
+    </script>
 </head>
 <body class="bg-dark">
     <div class="d-flex justify-content-between align-items-center text-light border border-light py-2 px-5">
@@ -39,6 +54,7 @@
                     <td>{{tvshow.rating}}</td>
                     <td>{{tvshow.owner.first_name}}</td> 
                     <td>
+                        <!-- <button class="btn btn-success">Like</button> -->
                         <a href="/tvshows/{{tvshow.id}}/view" class="btn btn-primary">View</a>
                         {% if tvshow.owner.id == session['id'] %}
                         <a href="/tvshows/{{tvshow.id}}/edit" class="btn btn-secondary">Edit</a>

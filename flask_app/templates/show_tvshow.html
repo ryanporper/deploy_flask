@@ -20,17 +20,20 @@
         <table class="table table-light table-striped">
             <thead>
                 <tr>
-                <th>Type</th>
-                <th>Genre</th>
-                <th>Platform</th>
-                <th>Rating</th>
-                <th>Release Date</th>
-                <th>Description</th>
-                <th>Posted by</th>
-            </tr>
+                    <th>Title</th>
+                    <th>Type</th>
+                    <th>Genre</th>
+                    <th>Platform</th>
+                    <th>Rating</th>
+                    <th>Release Date</th>
+                    <th>Description</th>
+                    <th>Posted by</th>
+                    <th></th>
+                </tr>
             </thead>
             <tbody>
                 <tr>
+                    <td>{{tvshow.title}}</td>
                     <td>{{tvshow.type}}</td>
                     <td>{{tvshow.genre}}</td>
                     <td>{{tvshow.platform}}</td>
@@ -38,10 +41,14 @@
                     <td>{{tvshow.release_date}}</td>
                     <td>{{tvshow.description}}</td>
                     <td>{{tvshow.owner.first_name}}</td>
+                    <td><button class="btn btn-success" onclick="addLike('#like')"><span id="like">2</span> likes</button></td>
+                    
+                    
                 </tr>
             </tbody>
 
         </table>
     </div>
+     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

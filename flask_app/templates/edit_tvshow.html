@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="container bg-secondary text-light">
-        <form action="/tvshows/{{tvshow.id}}/update" method="post" class="col-2">
+        <form id="showsForm" action="/tvshows/{{tvshow.id}}/update" method="post" class="col-2">
             <input type="hidden" name="user_id" value="{{session.id}}">
             <div class="form-group m-2">
                 <label for="title">Title:</label>
@@ -57,5 +57,6 @@
         {% endif %}
         {% endwith %}
     </div>
+    <!-- <script src="{{ url_for('static', filename='js/script.js') }}"></script> -->
 </body>
 </html>
